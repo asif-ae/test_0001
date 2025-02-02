@@ -36,6 +36,6 @@ export default buildConfig({
     payloadCloudPlugin(),
     // storage-adapter-placeholder
   ],
-  serverURL: "http://localhost:4000",
+  serverURL: process.env.SERVER_URL || "http://localhost:4000",
   cors: ["http://localhost:3000", "http://localhost:3001"],
 })
