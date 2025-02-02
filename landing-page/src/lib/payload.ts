@@ -1,7 +1,9 @@
 import { BlogPost } from "@/types/blog.type";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
 export const getLandingPageContent = async () => {
-  const res = await fetch("http://localhost:4000/api/landing-page?limit=1", {
+  const res = await fetch(`${API_URL}/landing-page?limit=1`, {
     cache: "no-store",
   });
 
@@ -14,7 +16,7 @@ export const getLandingPageContent = async () => {
 };
 
 export const getBlogPosts = async (): Promise<BlogPost[]> => {
-  const res = await fetch("http://localhost:4000/api/blog-posts", {
+  const res = await fetch(`${API_URL}/blog-posts`, {
     cache: "no-store",
   });
 
@@ -27,7 +29,7 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 };
 
 export const getBlogPostById = async (id: string): Promise<BlogPost> => {
-  const res = await fetch(`http://localhost:4000/api/blog-posts/${id}`, {
+  const res = await fetch(`${API_URL}/blog-posts/${id}`, {
     cache: "no-store",
   });
 
