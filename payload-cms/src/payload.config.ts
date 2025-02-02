@@ -37,5 +37,5 @@ export default buildConfig({
     // storage-adapter-placeholder
   ],
   serverURL: process.env.SERVER_URL || "http://localhost:4000",
-  cors: ["http://localhost:3000", "http://localhost:3001"],
+  cors: ["http://localhost:3000", "http://localhost:3001", "https://test-0001-payload-cms.vercel.app"],
 })
