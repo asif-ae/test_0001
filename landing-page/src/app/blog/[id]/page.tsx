@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { getBlogPostById } from "@/lib/payload";
 import { richTextToHTML } from "@/lib/richTextToHtml";
 import { BlogPost } from "@/types/blog.type";
-import { useParams } from "next/navigation";
 import Link from "next/link";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function BlogPostPage() {
   const { id } = useParams(); // ✅ Get the `id` from URL params
@@ -25,7 +25,8 @@ export default function BlogPostPage() {
 
         setBlogPost(data);
         setContent(richTextToHTML(data.content));
-      } catch (error) {
+      } catch (_error) {
+        console.log({ _error });
         setError("Failed to fetch blog post. Please try again later.");
       } finally {
         setLoading(false);
@@ -55,7 +56,8 @@ export default function BlogPostPage() {
         <div className="relative z-10 max-w-3xl mx-auto">
           <h1 className="text-5xl font-extrabold">{blogPost.title}</h1>
           <p className="mt-3 text-lg">
-            {blogPost.blogName} by <span className="font-semibold">{blogPost.author}</span> -{" "}
+            {blogPost.blogName} by{" "}
+            <span className="font-semibold">{blogPost.author}</span> -{" "}
             {new Date(blogPost.publishedDate).toLocaleDateString()}
           </p>
           <p className="mt-2 text-sm opacity-80">{blogPost.contentFocus}</p>
